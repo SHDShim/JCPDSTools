@@ -1,0 +1,62 @@
+data_global
+_chemical_name_mineral 'Wadsleyite'
+loop_
+_publ_author_name
+'Hazen R M'
+'Weinberger M B'
+'Yang H'
+'Prewitt C T'
+_journal_name_full 'American Mineralogist'
+_journal_volume 85 
+_journal_year 2000
+_journal_page_first 770
+_journal_page_last 777
+_publ_section_title
+;
+ Comparative high-pressure crystal chemistry of wadsleyite,
+ beta-(Mg_1-xFe_x)2SiO4, with x=0 and 0.25
+ Sample: P = 0.00 GPa, X = .00
+;
+_database_code_amcsd 0002439
+_chemical_formula_sum 'Mg2 Si O4'
+_cell_length_a 5.6978
+_cell_length_b 11.4620
+_cell_length_c 8.2571
+_cell_angle_alpha 90
+_cell_angle_beta 90
+_cell_angle_gamma 90
+_cell_volume 539.256
+_exptl_crystal_density_diffrn      3.466
+_symmetry_space_group_name_H-M 'I m m a'
+loop_
+_space_group_symop_operation_xyz
+  'x,y,z'
+  '1/2+x,1/2+y,1/2+z'
+  'x,1/2-y,z'
+  '1/2+x,-y,1/2+z'
+  '-x,1/2+y,-z'
+  '1/2-x,+y,1/2-z'
+  '-x,y,z'
+  '1/2-x,1/2+y,1/2+z'
+  'x,-y,-z'
+  '1/2+x,1/2-y,1/2-z'
+  'x,1/2+y,-z'
+  '1/2+x,+y,1/2-z'
+  '-x,1/2-y,z'
+  '1/2-x,-y,1/2+z'
+  '-x,-y,-z'
+  '1/2-x,1/2-y,1/2-z'
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Mg1   0.00000   0.00000   0.00000
+Mg2   0.00000   0.25000   0.96980
+Mg3   0.25000   0.12690   0.25000
+Si   0.00000   0.11990   0.61650
+O1   0.00000   0.25000   0.21820
+O2   0.00000   0.25000   0.71570
+O3   0.00000   0.98980   0.25650
+O4   0.26010   0.12260   0.99310
+
