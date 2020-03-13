@@ -6,10 +6,16 @@ Major functions include:
 
 - Convert a CIF to JCPDS  
 - Edit existing JCPDS  
-- Examine possible errors on JCPDS
+- Examine possible errors on JCPDS  
+
+## Required packages
+
+`pymatgen` version 2019.4.11 or later.  
 
 ## How to install
 
 ```
-git clone .
+mkdir JCPDSTools
+cd JCPDSTools
+git clone https://github.com/SHDShim/JCPDSTools.git .
 ```

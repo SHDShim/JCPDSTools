@@ -1,6 +1,3 @@
-"""
-DO NOT OVERWRITE THIS FILE.  THIS IS SOMEWHAT DIFFERENT FROM PEAKPO's ds_JCPDS
-"""
 import numpy as np
 import os
 from pytheos import bm3_v
