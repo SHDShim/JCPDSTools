@@ -109,6 +109,9 @@ class Ui_MainWindow(object):
         self.pushButton_ImportJCPDS = QtWidgets.QPushButton(self.groupBox_4)
         self.pushButton_ImportJCPDS.setObjectName("pushButton_ImportJCPDS")
         self.horizontalLayout_2.addWidget(self.pushButton_ImportJCPDS)
+        self.pushButton_ViewInputFile = QtWidgets.QPushButton(self.groupBox_4)
+        self.pushButton_ViewInputFile.setObjectName("pushButton_ViewInputFile")
+        self.horizontalLayout_2.addWidget(self.pushButton_ViewInputFile)
         self.verticalLayout_7.addWidget(self.groupBox_4)
         self.groupBox_28 = QtWidgets.QGroupBox(self.tab_Editor)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
@@ -479,6 +482,7 @@ class Ui_MainWindow(object):
         self.pushButton_ImportCIF.setToolTip(_translate("MainWindow", "Open the first CHI file"))
         self.pushButton_ImportCIF.setText(_translate("MainWindow", "Import CIF"))
         self.pushButton_ImportJCPDS.setText(_translate("MainWindow", "Import JCPDS"))
+        self.pushButton_ViewInputFile.setText(_translate("MainWindow", "View file"))
         self.groupBox_28.setTitle(_translate("MainWindow", "Step2"))
         self.label_2.setText(_translate("MainWindow", "b (A)"))
         self.label.setText(_translate("MainWindow", "a (A)"))
@@ -516,11 +520,14 @@ class Ui_MainWindow(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">This tool allows for (1) converting an existing CIF to a JCPDS file, (2) edit an exiting JCPDS file, and (3) check possible problems in JCPDS file.</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">(Tips)</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">- If you do not have a CIF or a JCPDS for your material, you can first find a CIF or JCPDS for an analog material (for example different composition but the same crystal structure) and edit the unit-cell parameters and thermoelastic parameters.  Note that in this case, the calculatd intensities may not be accurate for your composition.  Yet, the peak position would be still accurate.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">If you do not have a CIF or a JCPDS for your material, you can first find a CIF or JCPDS for an analog material (for example different composition but the same crystal structure) and edit the unit-cell parameters and thermoelastic parameters.  Note that in this case, the calculatd intensities may not be accurate for your composition.  Yet, the peak position would be still accurate.</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Min. Int. defines the minimum peak intensity to include in JCPDS after calculation.  If this value is too low (&lt;1%), it will slow down PeakPo.  However, if you need to identify weak lines, it is necessary to set this to low.</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Min. dsp defines the minimum d-spacing to include in JCPDS after calculation.  If this value is too low (&lt;0.8 A), it will slow down PeakPo.  However, if you have high angle diffraction lines to identify, it is ncessary to set this small.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">If you download a CIF file from MaterialsProject.org, make sure you download `Symmetrized` CIFs.  Others are all in P1 symmetry and would not work correctly.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">----------------------------</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">JCDPS file format</p>\n"

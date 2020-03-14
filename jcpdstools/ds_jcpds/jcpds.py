@@ -382,6 +382,7 @@ class JCPDS(object):
 #                dl.dsp = dsp
         elif ((pressure == 0.0) and (temperature == 300.) and
               not (use_table_for_0GPa)):
+            self._cal_UCPatPT(b_a, c_a)
             DLines = self.get_DiffractionLines()
 #            a = self.a; b = self.b; c = self.c;
 #            alpha = self.alpha; beta = self.beta; gamma = self.gamma
@@ -573,7 +574,11 @@ class JCPDS(object):
         self.alpha0 = float(lattice.alpha)
         self.beta0 = float(lattice.beta)
         self.gamma0 = float(lattice.gamma)
-        self.symmetry = str(SpacegroupAnalyzer(structure).get_crystal_system())
+        symm = str(SpacegroupAnalyzer(structure).get_crystal_system())
+        if symm == 'trigonal':
+            self.symmetry = 'hexagonal'
+        else:
+            self.symmetry = symm
         self.file = file
         self.name = name
         self.version = version

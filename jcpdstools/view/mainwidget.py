@@ -1,12 +1,8 @@
 import os
 from PyQt5 import QtWidgets
 from .qtd import Ui_MainWindow
-#from utils import SpinBoxFixStyle
 from version import __version__
 from utils import SpinBoxFixStyle
-#from utils import InformationBox
-# exec(open(os.path.join(os.path.curdir, 'version.py')).read())
-# exec(open(os.path.join(os.path.curdir, 'citation.py')).read())
 
 
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):

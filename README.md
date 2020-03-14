@@ -19,3 +19,10 @@ mkdir JCPDSTools
 cd JCPDSTools
 git clone https://github.com/SHDShim/JCPDSTools.git .
 ```
+
+## How to run
+
+```
+cd JCPDSTools/JCPDSTools
+python -m jcpdstools
+```

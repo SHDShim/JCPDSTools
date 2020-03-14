@@ -1,15 +1,10 @@
-import os
-import glob
-import numpy as np
 from PyQt5 import QtWidgets
 from PyQt5 import QtCore
 from view import MainWindow
-from utils import dialog_savefile, writechi, extract_extension, \
-    convert_wl_to_energy, get_sorted_filelist, find_from_filelist, \
-    make_filename, get_directory, get_temp_dir, InformationBox
+from utils import dialog_savefile, InformationBox, breakdown_filename
 # do not change the module structure for ds_jcpds and ds_powdiff for
 # retro compatibility
-from ds_jcpds import UnitCell, JCPDS
+from ds_jcpds import JCPDS
 import pymatgen as mg
 import datetime
 #from utils import readchi, make_filename, writechi
@@ -40,11 +35,13 @@ class MainController(object):
         self.widget.pushButton_CalculateJCPDS.clicked.connect(
             self.calculate_jcpds)
         self.widget.pushButton_WriteJCPDS.clicked.connect(self.write_jcpds)
+        self.widget.pushButton_ViewInputFile.clicked.connect(self.view_inputfile)
 
     def calculate_jcpds(self):
         comment = str(self.widget.lineEdit_Comment.text())
         int_min = self.widget.doubleSpinBox_MinDsp.value()
         dsp_min = self.widget.doubleSpinBox_MinInt.value()
+        self.model.version = 4
         self.read_jcpds_values()
         textoutput = self.model.write_to_string(comments = comment, \
                                  int_min = int_min, dsp_min=dsp_min, \
@@ -68,6 +65,17 @@ class MainController(object):
                                  int_min = int_min, dsp_min=dsp_min, \
                                  calculate_1bar_table = True)
 
+    def _check_P1_in_cif(self, file):
+        with open(file, 'r') as f:
+            cif_data = f.readlines()
+        for line in cif_data:
+            if '_symmetry_space_group_name_H-M' in line:
+                a = line.replace('_symmetry_space_group_name_H-M', '')
+                if 'P 1' in a:
+                    return False
+                else:
+                    return True
+        return False
 
     def import_cif(self):
         # pymatgen version check
@@ -89,6 +97,12 @@ class MainController(object):
             "(*.cif)")[0]
         if file == '':
             return
+        not_P1 = self._check_P1_in_cif(file)
+        if not not_P1:
+            QtWidgets.QMessageBox.warning(
+                self.widget, "Warning",
+                "The CIF file is for P1 structure which cannot be processed.")
+            return
         jcpds_from_cif = JCPDS()
         success = jcpds_from_cif.set_from_cif(file, 200., 4., \
                       thermal_expansion=1e-5)
@@ -99,11 +113,22 @@ class MainController(object):
                 "Check the cif file for space group.  It should not be P1.")
             return
         self.model = jcpds_from_cif
-        self.file_path = os.path.split(str(file[0]))[0]
+        self.model.comments = file
+        self.file_path, _, _ = breakdown_filename(file)
         self.file_name = file
         self._update_filename()
         # populate double spin boxes
         self._populate_parameters()
+        infobox = InformationBox()
+        infobox.setText(self._get_text_content())
+        infobox.exec_()
+
+    def view_inputfile(self):
+        if self.file_name == '':
+            QtWidgets.QMessageBox.warning(
+                self.widget, "Warning",
+                "There is no input file to show.")
+            return
         infobox = InformationBox()
         infobox.setText(self._get_text_content())
         infobox.exec_()
@@ -131,7 +156,7 @@ class MainController(object):
                 self.widget, "Warning", "JCPDS read failed.")
             return
         self.model = jcpds
-        self.file_path = os.path.split(str(file[0]))[0]
+        self.file_path, _, _ = breakdown_filename(file)
         self.file_name = file
         self._update_filename()
         # populate double spin boxes
@@ -149,7 +174,8 @@ class MainController(object):
         self.widget.doubleSpinBox_CellParamGamma.setValue(self.model.gamma0)
         self.widget.doubleSpinBox_K0.setValue(self.model.k0)
         self.widget.doubleSpinBox_K0p.setValue(self.model.k0p)
-        self.widget.doubleSpinBox_ThermExpan.setValue(self.model.thermal_expansion)
+        self.widget.doubleSpinBox_ThermExpan.setValue(
+            self.model.thermal_expansion)
 
         self.widget.lineEdit_CrystalSystem.setText(self.model.symmetry)
         self.widget.lineEdit_CrystalSystem.setReadOnly(True)
@@ -235,9 +261,11 @@ class MainController(object):
             self.model.a0 = self.widget.doubleSpinBox_CellParamA.value()
             self.model.b0 = self.widget.doubleSpinBox_CellParamB.value()
             self.model.c0 = self.widget.doubleSpinBox_CellParamC.value()
-            self.model.alpha0 = self.widget.doubleSpinBox_CellParamAlpha.value()
+            self.model.alpha0 = \
+                self.widget.doubleSpinBox_CellParamAlpha.value()
             self.model.beta0 = self.widget.doubleSpinBox_CellParamBeta.value()
-            self.model.gamma0 = self.widget.doubleSpinBox_CellParamGamma.value()
+            self.model.gamma0 = \
+                self.widget.doubleSpinBox_CellParamGamma.value()
 
     def write_setting(self):
         """
