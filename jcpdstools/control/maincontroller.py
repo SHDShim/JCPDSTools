@@ -107,6 +107,7 @@ class MainController(object):
             "(*.cif)")[0]
         if file == '':
             return
+        self._quick_input_view(filename=file)
         not_P1 = self._check_P1_in_cif(file)
         if not not_P1:
             QtWidgets.QMessageBox.warning(
@@ -123,14 +124,16 @@ class MainController(object):
                 "Check the cif file for space group.  It should not be P1.")
             return
         self.model = jcpds_from_cif
-        self.model.comments = file
-        self.file_path, _, _ = breakdown_filename(file)
+        self.file_path, fn, ext = breakdown_filename(file)
+        self.model.comments = 'from ' + fn + ext
         self.file_name = file
         self._update_filename()
         # populate double spin boxes
         self._populate_parameters()
+
+    def _quick_input_view(self, filename=None):
         infobox = InformationBox()
-        infobox.setText(self._get_text_content())
+        infobox.setText(self._get_text_content(filename=filename))
         infobox.exec_()
 
     def view_inputfile(self):
@@ -139,12 +142,12 @@ class MainController(object):
                 self.widget, "Warning",
                 "There is no input file to show.")
             return
-        infobox = InformationBox()
-        infobox.setText(self._get_text_content())
-        infobox.exec_()
+        self._quick_input_view()
 
-    def _get_text_content(self):
-        f = open(self.file_name, 'r')
+    def _get_text_content(self, filename=None):
+        if filename == None:
+            filename = self.file_name
+        f = open(filename, 'r')
         text = f.read()
         f.close()
         return text
@@ -158,6 +161,7 @@ class MainController(object):
             "(*.jcpds)")[0]
         if file == []:
             return
+        self._quick_input_view(filename=file)
         jcpds = JCPDS()
         try:
             jcpds.read_file(file)
@@ -171,9 +175,6 @@ class MainController(object):
         self._update_filename()
         # populate double spin boxes
         self._populate_parameters()
-        infobox = InformationBox()
-        infobox.setText(self._get_text_content())
-        infobox.exec_()
         # somethings to say about potential problems
         if self.model.k0 > 600.:
             QtWidgets.QMessageBox.warning(
