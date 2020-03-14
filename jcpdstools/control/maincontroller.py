@@ -38,6 +38,10 @@ class MainController(object):
         self.widget.pushButton_ViewInputFile.clicked.connect(self.view_inputfile)
 
     def calculate_jcpds(self):
+        if self.file_name == '':
+            QtWidgets.QMessageBox.warning(self.widget, "Warning",
+                              "Input filename is not given.")
+            return
         comment = str(self.widget.lineEdit_Comment.text())
         int_min = self.widget.doubleSpinBox_MinDsp.value()
         dsp_min = self.widget.doubleSpinBox_MinInt.value()
@@ -185,7 +189,7 @@ class MainController(object):
         self.widget.doubleSpinBox_K0.setValue(self.model.k0)
         self.widget.doubleSpinBox_K0p.setValue(self.model.k0p)
         self.widget.doubleSpinBox_ThermExpan.setValue(
-            self.model.thermal_expansion)
+            self.model.thermal_expansion * 1.e5)
 
         self.widget.lineEdit_CrystalSystem.setText(self.model.symmetry)
         self.widget.lineEdit_CrystalSystem.setReadOnly(True)
@@ -241,7 +245,7 @@ class MainController(object):
         self.model.k0 = self.model.k0 = self.widget.doubleSpinBox_K0.value()
         self.model.k0p = self.widget.doubleSpinBox_K0p.value()
         self.model.thermal_expansion = \
-            self.widget.doubleSpinBox_ThermExpan.value()
+            self.widget.doubleSpinBox_ThermExpan.value() * 1.e-5
 
         if self.model.symmetry == 'cubic':  # cubic
             self.model.a0 = self.widget.doubleSpinBox_CellParamA.value()

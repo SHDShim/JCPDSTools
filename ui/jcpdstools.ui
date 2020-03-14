@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>610</width>
+    <width>533</width>
     <height>775</height>
    </rect>
   </property>
@@ -155,12 +155,19 @@
                </sizepolicy>
               </property>
               <property name="title">
-               <string>Source file</string>
+               <string/>
               </property>
               <property name="flat">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
-              <layout class="QVBoxLayout" name="verticalLayout">
+              <layout class="QHBoxLayout" name="horizontalLayout_6">
+               <item>
+                <widget class="QLabel" name="label_7">
+                 <property name="text">
+                  <string>Input file</string>
+                 </property>
+                </widget>
+               </item>
                <item>
                 <widget class="QLineEdit" name="lineEdit_SourceFile">
                  <property name="readOnly">
@@ -180,10 +187,10 @@
                </sizepolicy>
               </property>
               <property name="title">
-               <string>Step1</string>
+               <string>Step 1 (Input)</string>
               </property>
               <property name="flat">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
               <layout class="QHBoxLayout" name="horizontalLayout_2">
                <item>
@@ -224,7 +231,7 @@
                <item>
                 <widget class="QPushButton" name="pushButton_ViewInputFile">
                  <property name="text">
-                  <string>View file</string>
+                  <string>View input file</string>
                  </property>
                 </widget>
                </item>
@@ -246,10 +253,10 @@
                </size>
               </property>
               <property name="title">
-               <string>Step2</string>
+               <string>Step 2 (Cell parameters, Angstrom for lengths and Degrees for angles)</string>
               </property>
               <property name="flat">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
               <layout class="QGridLayout" name="gridLayout">
                <property name="leftMargin">
@@ -267,7 +274,7 @@
                <item row="0" column="3">
                 <widget class="QLabel" name="label_2">
                  <property name="text">
-                  <string>b (A)</string>
+                  <string>b0</string>
                  </property>
                 </widget>
                </item>
@@ -302,14 +309,14 @@
                <item row="0" column="0">
                 <widget class="QLabel" name="label">
                  <property name="text">
-                  <string>a (A)</string>
+                  <string>a0</string>
                  </property>
                 </widget>
                </item>
                <item row="4" column="0">
                 <widget class="QLabel" name="label_5">
                  <property name="text">
-                  <string>alpha (deg)</string>
+                  <string>alpha0</string>
                  </property>
                 </widget>
                </item>
@@ -400,14 +407,14 @@
                <item row="0" column="6">
                 <widget class="QLabel" name="label_4">
                  <property name="text">
-                  <string>c (A)</string>
+                  <string>c0</string>
                  </property>
                 </widget>
                </item>
                <item row="4" column="3">
                 <widget class="QLabel" name="label_6">
                  <property name="text">
-                  <string>beta (deg)</string>
+                  <string>beta0</string>
                  </property>
                 </widget>
                </item>
@@ -442,7 +449,7 @@
                <item row="4" column="6">
                 <widget class="QLabel" name="label_12">
                  <property name="text">
-                  <string>gamma (deg)</string>
+                  <string>gamma0</string>
                  </property>
                 </widget>
                </item>
@@ -489,10 +496,10 @@
                </sizepolicy>
               </property>
               <property name="title">
-               <string>Symmetry</string>
+               <string/>
               </property>
               <property name="flat">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
               <layout class="QHBoxLayout" name="horizontalLayout_5">
                <item>
@@ -515,20 +522,6 @@
                  </property>
                 </widget>
                </item>
-               <item>
-                <widget class="QLabel" name="label_14">
-                 <property name="text">
-                  <string>Space group</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLineEdit" name="lineEdit_SpaceGroup">
-                 <property name="readOnly">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
               </layout>
              </widget>
             </item>
@@ -541,10 +534,10 @@
                </sizepolicy>
               </property>
               <property name="title">
-               <string>Step3</string>
+               <string>Step 3 (Thermoelastic parameters)</string>
               </property>
               <property name="flat">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
               <layout class="QGridLayout" name="gridLayout_8">
                <property name="leftMargin">
@@ -597,7 +590,7 @@
                <item row="2" column="4">
                 <widget class="QLabel" name="label_21">
                  <property name="text">
-                  <string>Therm. Expans.</string>
+                  <string>alpha (x10^5)</string>
                  </property>
                 </widget>
                </item>
@@ -647,16 +640,16 @@
                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                  </property>
                  <property name="decimals">
-                  <number>5</number>
+                  <number>2</number>
                  </property>
                  <property name="maximum">
-                  <double>1.000000000000000</double>
+                  <double>100.000000000000000</double>
                  </property>
                  <property name="singleStep">
-                  <double>0.000010000000000</double>
+                  <double>0.010000000000000</double>
                  </property>
                  <property name="value">
-                  <double>0.000010000000000</double>
+                  <double>1.000000000000000</double>
                  </property>
                 </widget>
                </item>
@@ -679,10 +672,10 @@
                </sizepolicy>
               </property>
               <property name="title">
-               <string>Step4</string>
+               <string>Step 4</string>
               </property>
               <property name="flat">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
               <layout class="QHBoxLayout" name="horizontalLayout_4">
                <item>
@@ -713,10 +706,10 @@
                </size>
               </property>
               <property name="title">
-               <string>Step5 (see help tap for the parameters)</string>
+               <string>Step 5 (see help tap for the parameters)</string>
               </property>
               <property name="flat">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
               <layout class="QHBoxLayout" name="horizontalLayout">
                <item>
@@ -798,10 +791,10 @@
                <bool>false</bool>
               </property>
               <property name="title">
-               <string>Step6</string>
+               <string>Step 6 (Output)</string>
               </property>
               <property name="flat">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
               <layout class="QHBoxLayout" name="horizontalLayout_3">
                <property name="spacing">
@@ -822,7 +815,7 @@
                <item>
                 <widget class="QPushButton" name="pushButton_CalculateJCPDS">
                  <property name="text">
-                  <string>Calculate</string>
+                  <string>Preview output</string>
                  </property>
                 </widget>
                </item>
@@ -832,7 +825,7 @@
                   <string>Set pressure to 1 bar</string>
                  </property>
                  <property name="text">
-                  <string>Write</string>
+                  <string>Write JCPDS</string>
                  </property>
                 </widget>
                </item>
