@@ -1,3 +1,4 @@
+import os
 from PyQt5 import QtWidgets
 from PyQt5 import QtCore
 from view import MainWindow
@@ -59,7 +60,12 @@ class MainController(object):
             QtWidgets.QMessageBox.warning(self.widget, "Warning",
                               "Input filename is not given.")
             return
-        filen_default = self.file_name + '.jcpds'
+        path, filen, ext = breakdown_filename(self.file_name)
+        if ext == '.cif':
+            stamp = '-cif-jt'
+        else:
+            stamp = '-jt'
+        filen_default = os.path.join(path, filen + stamp + '.jcpds')
         filen = dialog_savefile(self.widget, filen_default)
         comment = str(self.widget.lineEdit_Comment.text())
         int_min = self.widget.doubleSpinBox_MinDsp.value()
