@@ -164,6 +164,16 @@ class MainController(object):
         infobox = InformationBox()
         infobox.setText(self._get_text_content())
         infobox.exec_()
+        # somethings to say about potential problems
+        if self.model.k0 > 600.:
+            QtWidgets.QMessageBox.warning(
+                self.widget, "Warning",
+                "K0 value of this JCPDS is abnormally high and could crash PeakPo.")
+        if self.model.k0p < 1.:
+            QtWidgets.QMessageBox.warning(
+                self.widget, "Warning",
+                "K0p value of this JCPDS is abnormally low and could crash PeakPo.")
+
 
     def _populate_parameters(self):
         self.widget.doubleSpinBox_CellParamA.setValue(self.model.a0)
