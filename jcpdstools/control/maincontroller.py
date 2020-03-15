@@ -59,6 +59,10 @@ class MainController(object):
         infobox.exec_()
 
     def write_dioptas_jcpds(self):
+        QtWidgets.QMessageBox.warning(self.widget, "Warning",
+                  "This function is not yet supported.")
+        return
+
         if self.file_name == '':
             QtWidgets.QMessageBox.warning(self.widget, "Warning",
                               "Input filename is not given.")
