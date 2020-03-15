@@ -5,7 +5,7 @@ from .xrd import cal_UnitCellVolume, cal_dspacing
 import pymatgen as mg
 from pymatgen.analysis.diffraction.xrd import XRDCalculator
 from pymatgen.symmetry.analyzer import SpacegroupAnalyzer
-from .jcpds_dioptas import jcpds
+from .jcpds_dioptas import jcpds, jcpds_reflection
 import datetime
 
 # import numpy.ma as ma
@@ -691,6 +691,36 @@ class JCPDS(object):
         f = open(filename, 'w')
         f.write(textoutput)
         f.close()
+
+    def write_to_dioptas_jcpds(self, filename, int_min=0., dsp_min=0.):
+        jcpds_dioptas = jcpds()
+        jcpds_dioptas.params['comments'].append(self.comments)
+        jcpds_dioptas.params['symmetry'] = self.symmetry
+        jcpds_dioptas.params['k0'] = self.k0
+        jcpds_dioptas.params['k0p0'] = self.k0p
+        jcpds_dioptas.params['alpha_t0'] = self.thermal_expansion
+        jcpds_dioptas.params['a0'] = self.a0
+        jcpds_dioptas.params['b0'] = self.b0
+        jcpds_dioptas.params['c0'] = self.c0
+        jcpds_dioptas.params['alpha0'] = self.alpha0
+        jcpds_dioptas.params['beta0'] = self.beta0
+        jcpds_dioptas.params['gamma0'] = self.gamma0
+        jcpds_dioptas.params['v0'] = self.v0
+
+        reflections = []
+
+        for line in self.DiffLines:
+            if (line.dsp0 > dsp_min) and (line.intensity > int_min):
+                reflection = jcpds_reflection()
+                reflection.d0 = line.dsp0
+                reflection.intensity = line.intensity
+                reflection.h = line.h
+                reflection.k = line.k
+                reflection.l = line.l
+                reflections.append(reflection)
+        jcpds_dioptas.reflections = reflections
+
+        jcpds_dioptas.save_file(filename)
 
 
 class Session(object):

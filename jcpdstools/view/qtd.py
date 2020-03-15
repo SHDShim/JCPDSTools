@@ -2,13 +2,11 @@
 
 # Form implementation generated from reading ui file '../ui/jcpdstools.ui'
 #
-# Created by: PyQt5 UI code generator 5.12.3
+# Created by: PyQt5 UI code generator 5.9.2
 #
 # WARNING! All changes made in this file will be lost!
 
-
 from PyQt5 import QtCore, QtGui, QtWidgets
-
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -382,6 +380,9 @@ class Ui_MainWindow(object):
         self.pushButton_CalculateJCPDS = QtWidgets.QPushButton(self.groupBox)
         self.pushButton_CalculateJCPDS.setObjectName("pushButton_CalculateJCPDS")
         self.horizontalLayout_3.addWidget(self.pushButton_CalculateJCPDS)
+        self.pushButton_WriteDioptasJCPDS = QtWidgets.QPushButton(self.groupBox)
+        self.pushButton_WriteDioptasJCPDS.setObjectName("pushButton_WriteDioptasJCPDS")
+        self.horizontalLayout_3.addWidget(self.pushButton_WriteDioptasJCPDS)
         self.pushButton_WriteJCPDS = QtWidgets.QPushButton(self.groupBox)
         self.pushButton_WriteJCPDS.setObjectName("pushButton_WriteJCPDS")
         self.horizontalLayout_3.addWidget(self.pushButton_WriteJCPDS)
@@ -500,8 +501,9 @@ class Ui_MainWindow(object):
         self.label_20.setText(_translate("MainWindow", "Min. Int"))
         self.groupBox.setTitle(_translate("MainWindow", "Step 6 (Output)"))
         self.pushButton_CalculateJCPDS.setText(_translate("MainWindow", "Preview output"))
+        self.pushButton_WriteDioptasJCPDS.setText(_translate("MainWindow", "Write Dioptas JCPDS"))
         self.pushButton_WriteJCPDS.setToolTip(_translate("MainWindow", "Set pressure to 1 bar"))
-        self.pushButton_WriteJCPDS.setText(_translate("MainWindow", "Write JCPDS"))
+        self.pushButton_WriteJCPDS.setText(_translate("MainWindow", "Write PeakPo JCPDS"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_Editor), _translate("MainWindow", "Editor"))
         self.textEdit_2.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"

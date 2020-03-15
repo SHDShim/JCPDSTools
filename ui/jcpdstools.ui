@@ -820,12 +820,19 @@
                 </widget>
                </item>
                <item>
+                <widget class="QPushButton" name="pushButton_WriteDioptasJCPDS">
+                 <property name="text">
+                  <string>Write Dioptas JCPDS</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
                 <widget class="QPushButton" name="pushButton_WriteJCPDS">
                  <property name="toolTip">
                   <string>Set pressure to 1 bar</string>
                  </property>
                  <property name="text">
-                  <string>Write JCPDS</string>
+                  <string>Write PeakPo JCPDS</string>
                  </property>
                 </widget>
                </item>

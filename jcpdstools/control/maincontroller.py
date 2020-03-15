@@ -36,7 +36,10 @@ class MainController(object):
         self.widget.pushButton_CalculateJCPDS.clicked.connect(
             self.calculate_jcpds)
         self.widget.pushButton_WriteJCPDS.clicked.connect(self.write_jcpds)
-        self.widget.pushButton_ViewInputFile.clicked.connect(self.view_inputfile)
+        self.widget.pushButton_WriteDioptasJCPDS.clicked.connect(
+            self.write_dioptas_jcpds)
+        self.widget.pushButton_ViewInputFile.clicked.connect(
+            self.view_inputfile)
 
     def calculate_jcpds(self):
         if self.file_name == '':
@@ -55,6 +58,25 @@ class MainController(object):
         infobox.setText(textoutput)
         infobox.exec_()
 
+    def write_dioptas_jcpds(self):
+        if self.file_name == '':
+            QtWidgets.QMessageBox.warning(self.widget, "Warning",
+                              "Input filename is not given.")
+            return
+        path, filen, ext = breakdown_filename(self.file_name)
+        stamp = '-dioptas-jt'
+        filen_default = os.path.join(path, filen + stamp + '.jcpds')
+        filen = dialog_savefile(self.widget, filen_default)
+        if filen == '':
+            return
+        self.model.comments = str(self.widget.lineEdit_Comment.text())
+        int_min = self.widget.doubleSpinBox_MinDsp.value()
+        dsp_min = self.widget.doubleSpinBox_MinInt.value()
+        self.read_jcpds_values()
+        self.model.write_to_dioptas_jcpds(filen, int_min=int_min, \
+                                          dsp_min=dsp_min)
+
+
     def write_jcpds(self):
         if self.file_name == '':
             QtWidgets.QMessageBox.warning(self.widget, "Warning",
@@ -67,6 +89,8 @@ class MainController(object):
             stamp = '-jt'
         filen_default = os.path.join(path, filen + stamp + '.jcpds')
         filen = dialog_savefile(self.widget, filen_default)
+        if filen == '':
+            return
         comment = str(self.widget.lineEdit_Comment.text())
         int_min = self.widget.doubleSpinBox_MinDsp.value()
         dsp_min = self.widget.doubleSpinBox_MinInt.value()
@@ -159,7 +183,7 @@ class MainController(object):
         file = QtWidgets.QFileDialog.getOpenFileName(
             self.widget, "Choose JPCDS Files", self.file_path,
             "(*.jcpds)")[0]
-        if file == []:
+        if file == '':
             return
         self._quick_input_view(filename=file)
         jcpds = JCPDS()
