@@ -391,7 +391,7 @@ class Ui_MainWindow(object):
         self.tab_About = QtWidgets.QWidget()
         self.tab_About.setObjectName("tab_About")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.tab_About)
-        self.verticalLayout_2.setContentsMargins(3, 12, 3, 12)
+        self.verticalLayout_2.setContentsMargins(12, 12, 12, 12)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.frame_26 = QtWidgets.QFrame(self.tab_About)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
@@ -404,10 +404,10 @@ class Ui_MainWindow(object):
         self.gridLayout_13.setContentsMargins(-1, 3, -1, 3)
         self.gridLayout_13.setObjectName("gridLayout_13")
         self.verticalLayout_2.addWidget(self.frame_26)
-        self.textEdit_2 = QtWidgets.QTextEdit(self.tab_About)
-        self.textEdit_2.setReadOnly(True)
-        self.textEdit_2.setObjectName("textEdit_2")
-        self.verticalLayout_2.addWidget(self.textEdit_2)
+        self.textEdit_Help = QtWidgets.QTextEdit(self.tab_About)
+        self.textEdit_Help.setReadOnly(True)
+        self.textEdit_Help.setObjectName("textEdit_Help")
+        self.verticalLayout_2.addWidget(self.textEdit_Help)
         self.frame_27 = QtWidgets.QFrame(self.tab_About)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -505,26 +505,35 @@ class Ui_MainWindow(object):
         self.pushButton_WriteJCPDS.setToolTip(_translate("MainWindow", "Set pressure to 1 bar"))
         self.pushButton_WriteJCPDS.setText(_translate("MainWindow", "Write PeakPo JCPDS"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_Editor), _translate("MainWindow", "Editor"))
-        self.textEdit_2.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.textEdit_Help.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Helvetica\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">JCPDSTools</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">by S.-H. Dan Shim (SHDShim@gmail.com)</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">by S.-H. Dan Shim (SHDShim@gmail.com), 2020</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">2020</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">This tool allows for (1) converting an existing CIF to a JCPDS file, (2) edit an exiting JCPDS file, and (3) check possible problems in JCPDS file.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">JCPDSTools allow for (1) converting an existing CIF to a JCPDS file, (2) editing an exiting JCPDS file, and (3) checking possible problems in JCPDS file.</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">(Tips)</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">If you do not have a CIF or a JCPDS for your material, you can first find a CIF or JCPDS for an analog material (for example different composition but the same crystal structure) and edit the unit-cell parameters and thermoelastic parameters.  Note that in this case, the calculatd intensities may not be accurate for your composition.  Yet, the peak position would be still accurate.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">If you do not have a CIF or a JCPDS for your material:</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">First find a CIF or JCPDS for an analog material, different composition but the same crystal structure.  For example, find cif for CaCl2 and use it for CaCl2 type structured SiO2.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Read the file and edit the unit-cell parameters and thermoelastic parameters in JCPDSTools</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Note that in this case, the calculated intensities may not be accurate for your composition.  Yet, the peak position will be still accurate.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">If you have structural information from a paper, but no CIF or JCPDS:</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">In CrystalMaker, type in the information (space group, unit-cell parameters, and atomic positions).</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Export the information in a CIF file.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Import the CIF file in JCPDSTools and convert it to JCPDS.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">If you download a CIF file from MaterialsProject.org, make sure you download `Symmetrized` CIFs.  Others are all in P1 symmetry and would not work correctly.</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Min. Int. defines the minimum peak intensity to include in JCPDS after calculation.  If this value is too low (&lt;1%), it will slow down PeakPo.  However, if you need to identify weak lines, it is necessary to set this to low.</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Min. dsp defines the minimum d-spacing to include in JCPDS after calculation.  If this value is too low (&lt;0.8 A), it will slow down PeakPo.  However, if you have high angle diffraction lines to identify, it is ncessary to set this small.</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">If you download a CIF file from MaterialsProject.org, make sure you download `Symmetrized` CIFs.  Others are all in P1 symmetry and would not work correctly.</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">----------------------------</p>\n"
@@ -549,7 +558,8 @@ class Ui_MainWindow(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">4    orthorhombic</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">5    monoclinic</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">6    triclinic</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">7    No symmetry</p></body></html>"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">7    No symmetry</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_About), _translate("MainWindow", "Help"))
         self.mplactionOpen.setText(_translate("MainWindow", "Open CHI file"))
         self.actionClose.setText(_translate("MainWindow", "Close"))
@@ -569,3 +579,4 @@ class Ui_MainWindow(object):
         self.mplactionShow_a_JCPDS_file.setText(_translate("MainWindow", "Show a JCPDS file"))
         self.actionCiting_PeakPo.setText(_translate("MainWindow", "Citing PeakPo"))
         self.actionShortcut_keys.setText(_translate("MainWindow", "Shortcut keys"))
+

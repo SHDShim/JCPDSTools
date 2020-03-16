@@ -1,0 +1,50 @@
+JCPDSTools
+
+by S.-H. Dan Shim (SHDShim@gmail.com), 2020
+
+JCPDSTools allow for (1) converting an existing CIF to a JCPDS file, (2) editing an exiting JCPDS file, and (3) checking possible problems in JCPDS file.
+
+(Tips)
+
+If you do not have a CIF or a JCPDS for your material:
+
+First find a CIF or JCPDS for an analog material, different composition but the same crystal structure.  For example, find cif for CaCl2 and use it for CaCl2 type structured SiO2.
+Read the file and edit the unit-cell parameters and thermoelastic parameters in JCPDSTools
+Note that in this case, the calculated intensities may not be accurate for your composition.  Yet, the peak position will be still accurate.
+
+If you have structural information from a paper, but no CIF or JCPDS:
+
+In CrystalMaker, type in the information (space group, unit-cell parameters, and atomic positions).
+Export the information in a CIF file.
+Import the CIF file in JCPDSTools and convert it to JCPDS.
+
+If you download a CIF file from MaterialsProject.org, make sure you download `Symmetrized` CIFs.  Others are all in P1 symmetry and would not work correctly.
+
+Min. Int. defines the minimum peak intensity to include in JCPDS after calculation.  If this value is too low (<1%), it will slow down PeakPo.  However, if you need to identify weak lines, it is necessary to set this to low.
+
+Min. dsp defines the minimum d-spacing to include in JCPDS after calculation.  If this value is too low (<0.8 A), it will slow down PeakPo.  However, if you have high angle diffraction lines to identify, it is ncessary to set this small.
+
+
+----------------------------
+JCDPS file format
+----------------------------
+line 1: version_number
+line 2: header
+line 3: symmetry_code, K0, K0p
+line 4: a, b, c, alpha, beta, gamma (this line is different depending on symmetry, see examples)
+line 5: thermal expansion parameter
+line 6: column description (d  I/I0  h k l)
+line 7: d-spacing, I/I0, h, k, l
+.
+.
+.
+-----------------------------
+
+* symmetry code
+1	cubic
+2	hexagonal
+3	tetragonal
+4	orthorhombic
+5	monoclinic
+6	triclinic
+7	No symmetry

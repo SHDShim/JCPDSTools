@@ -41,6 +41,7 @@ class MainController(object):
         self.widget.pushButton_ViewInputFile.clicked.connect(
             self.view_inputfile)
 
+
     def calculate_jcpds(self):
         if self.file_name == '':
             QtWidgets.QMessageBox.warning(self.widget, "Warning",

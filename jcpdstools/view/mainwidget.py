@@ -21,7 +21,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         #self.connect_channel()
 
     def build_ui(self):
-        # self.pushButton_MakeBasePtn.setEnabled(False)
+        self.pushButton_WriteDioptasJCPDS.setDisabled(True)
         self.doubleSpinBox_CellParamA.setKeyboardTracking(False)
         self.doubleSpinBox_CellParamA.setStyle(SpinBoxFixStyle())
         self.doubleSpinBox_CellParamB.setKeyboardTracking(False)
@@ -42,7 +42,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.doubleSpinBox_K0p.setKeyboardTracking(False)
         self.doubleSpinBox_MinDsp.setKeyboardTracking(False)
         self.doubleSpinBox_MinInt.setKeyboardTracking(False)
-
 
     def closeEvent(self, event):
         self.deleteLater()
