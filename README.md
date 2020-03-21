@@ -26,3 +26,13 @@ git clone https://github.com/SHDShim/JCPDSTools.git .
 cd JCPDSTools/JCPDSTools
 python -m jcpdstools
 ```
+
+## Where to get CIF files
+
+CIF files for a wide range of materials can be downloaded from web databases, such as:
+
+- [American Mineralogist Crystal Structure Database](http://rruff.geo.arizona.edu/AMS/amcsd.php)  
+- [Materials Project](https://materialsproject.org)  
+- [Crystallography Open Database](http://www.crystallography.net/cod/index.php)  
+- [Crystallographic and Crystallochemical Database for Minerals and their Structural Analogues](http://database.iem.ac.ru/mincryst/index.php)  
+
