@@ -28,6 +28,11 @@ cd JCPDSTools/JCPDSTools
 python -m jcpdstools
 ```
 
+## How to download executables
+
+Check [my google drive folder](https://drive.google.com/drive/folders/0B0kkQLbYpQDYfjBGT21uMkx5cU1JMHJIUUhGR1FkdDVUdzFYVUdKR0Zya2NRcFYtUmRVUGM?resourcekey=0-FT-Lc6ZeuUBMaqHzzjZSbg&usp=sharing)
+
+
 ## Where to get CIF files
 
 CIF files for a wide range of materials can be downloaded from web databases, such as:
