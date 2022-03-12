@@ -1,5 +1,7 @@
 # JCPDSTools
 
+[![DOI](https://zenodo.org/badge/247157282.svg)](https://zenodo.org/badge/latestdoi/247157282)
+
 A python application for creating and editing JCPDS files for PeakPo.
 
 Major functions include:
@@ -41,4 +43,8 @@ CIF files for a wide range of materials can be downloaded from web databases, su
 - [Materials Project](https://materialsproject.org)  
 - [Crystallography Open Database](http://www.crystallography.net/cod/index.php)  
 - [Crystallographic and Crystallochemical Database for Minerals and their Structural Analogues](http://database.iem.ac.ru/mincryst/index.php)  
+
+## How to cite
+
+S.-H. Shim (2022) JCPDSTools - A python app for creating, converting, and revising JCPDS file. Zenodo. https://doi.org/10.5281/zenodo.6349449
 
