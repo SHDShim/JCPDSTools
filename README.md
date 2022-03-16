@@ -46,5 +46,5 @@ CIF files for a wide range of materials can be downloaded from web databases, su
 
 ## How to cite
 
-S.-H. Shim (2022) JCPDSTools - A python app for creating, converting, and revising JCPDS file. Zenodo. https://doi.org/10.5281/zenodo.6349449
+S.-H. Shim (2022) JCPDSTools - A python app for creating, converting, and revising high-pressure diffraction information file. Zenodo. https://doi.org/10.5281/zenodo.6349449
 
