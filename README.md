@@ -44,7 +44,10 @@ CIF files for a wide range of materials can be downloaded from web databases, su
 - [Crystallography Open Database](http://www.crystallography.net/cod/index.php)  
 - [Crystallographic and Crystallochemical Database for Minerals and their Structural Analogues](http://database.iem.ac.ru/mincryst/index.php)  
 
+The website below is useful if you have unknown phase.
+
+- [Crystal lattice - Structures](https://homepage.univie.ac.at/michael.leitner/lattice/index.html)
+
 ## How to cite
 
 S.-H. Shim (2022) JCPDSTools - A python app for creating, converting, and revising high-pressure diffraction information file. Zenodo. https://doi.org/10.5281/zenodo.6349449
-

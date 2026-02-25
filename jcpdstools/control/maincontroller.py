@@ -1,13 +1,15 @@
+import datetime
 import os
-from PyQt5 import QtWidgets
-from PyQt5 import QtCore
-from view import MainWindow
-from utils import dialog_savefile, InformationBox, breakdown_filename
+
+import pymatgen as mg
+from PyQt5 import QtCore, QtWidgets
+
 # do not change the module structure for ds_jcpds and ds_powdiff for
 # retro compatibility
 from ds_jcpds import JCPDS
-import pymatgen as mg
-import datetime
+from utils import InformationBox, breakdown_filename, dialog_savefile
+from view import MainWindow
+
 #from utils import readchi, make_filename, writechi
 
 
@@ -41,32 +43,31 @@ class MainController(object):
         self.widget.pushButton_ViewInputFile.clicked.connect(
             self.view_inputfile)
 
-
     def calculate_jcpds(self):
         if self.file_name == '':
             QtWidgets.QMessageBox.warning(self.widget, "Warning",
-                              "Input filename is not given.")
+                                          "Input filename is not given.")
             return
         comment = str(self.widget.lineEdit_Comment.text())
         int_min = self.widget.doubleSpinBox_MinDsp.value()
         dsp_min = self.widget.doubleSpinBox_MinInt.value()
         self.model.version = 4
         self.read_jcpds_values()
-        textoutput = self.model.write_to_string(comments = comment, \
-                                 int_min = int_min, dsp_min=dsp_min, \
-                                 calculate_1bar_table = True)
+        textoutput = self.model.write_to_string(comments=comment,
+                                                int_min=int_min, dsp_min=dsp_min,
+                                                calculate_1bar_table=True)
         infobox = InformationBox()
         infobox.setText(textoutput)
         infobox.exec_()
 
     def write_dioptas_jcpds(self):
         QtWidgets.QMessageBox.warning(self.widget, "Warning",
-                  "This function is not yet supported.")
+                                      "This function is not yet supported.")
         return
 
         if self.file_name == '':
             QtWidgets.QMessageBox.warning(self.widget, "Warning",
-                              "Input filename is not given.")
+                                          "Input filename is not given.")
             return
         path, filen, ext = breakdown_filename(self.file_name)
         stamp = '-dioptas-jt'
@@ -78,14 +79,13 @@ class MainController(object):
         int_min = self.widget.doubleSpinBox_MinDsp.value()
         dsp_min = self.widget.doubleSpinBox_MinInt.value()
         self.read_jcpds_values()
-        self.model.write_to_dioptas_jcpds(filen, int_min=int_min, \
+        self.model.write_to_dioptas_jcpds(filen, int_min=int_min,
                                           dsp_min=dsp_min)
-
 
     def write_jcpds(self):
         if self.file_name == '':
             QtWidgets.QMessageBox.warning(self.widget, "Warning",
-                              "Input filename is not given.")
+                                          "Input filename is not given.")
             return
         path, filen, ext = breakdown_filename(self.file_name)
         if ext == '.cif':
@@ -100,9 +100,9 @@ class MainController(object):
         int_min = self.widget.doubleSpinBox_MinDsp.value()
         dsp_min = self.widget.doubleSpinBox_MinInt.value()
         self.read_jcpds_values()
-        textoutput = self.model.write_to_file(filen, comments = comment, \
-                                 int_min = int_min, dsp_min=dsp_min, \
-                                 calculate_1bar_table = True)
+        textoutput = self.model.write_to_file(filen, comments=comment,
+                                              int_min=int_min, dsp_min=dsp_min,
+                                              calculate_1bar_table=True)
 
     def _check_P1_in_cif(self, file):
         with open(file, 'r') as f:
@@ -144,12 +144,12 @@ class MainController(object):
                 "The CIF file is for P1 structure which cannot be processed.")
             return
         jcpds_from_cif = JCPDS()
-        success = jcpds_from_cif.set_from_cif(file, 200., 4., \
-                      thermal_expansion=1e-5)
+        success = jcpds_from_cif.set_from_cif(file, 200., 4.,
+                                              thermal_expansion=1e-5)
         if not success:
             QtWidgets.QMessageBox.warning(
                 self.widget, "Warning",
-                "Conversion of your cif was not successful.\n" +  \
+                "Conversion of your cif was not successful.\n" +
                 "Check the cif file for space group.  It should not be P1.")
             return
         self.model = jcpds_from_cif
@@ -214,7 +214,6 @@ class MainController(object):
                 self.widget, "Warning",
                 "K0p value of this JCPDS is abnormally low and could crash PeakPo.")
 
-
     def _populate_parameters(self):
         self.widget.doubleSpinBox_CellParamA.setValue(self.model.a0)
         self.widget.doubleSpinBox_CellParamB.setValue(self.model.b0)
@@ -240,7 +239,7 @@ class MainController(object):
         elif self.model.symmetry == 'nosymmetry':  # P, d-sp input
             pass
         elif self.model.symmetry == 'hexagonal' or \
-            self.model.symmetry == 'trigonal':
+                self.model.symmetry == 'trigonal':
             self.widget.doubleSpinBox_CellParamA.setDisabled(False)
             self.widget.doubleSpinBox_CellParamB.setDisabled(True)
             self.widget.doubleSpinBox_CellParamC.setDisabled(False)
@@ -290,7 +289,7 @@ class MainController(object):
         elif self.model.symmetry == 'nosymmetry':  # P, d-sp input
             pass
         elif self.model.symmetry == 'hexagonal' or \
-            self.model.symmetry == 'trigonal':
+                self.model.symmetry == 'trigonal':
             self.model.a0 = self.widget.doubleSpinBox_CellParamA.value()
             self.model.b0 = self.widget.doubleSpinBox_CellParamA.value()
             self.model.c0 = self.widget.doubleSpinBox_CellParamC.value()
