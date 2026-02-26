@@ -1,14 +1,14 @@
 import datetime
 import os
+import re
+from importlib import metadata
 
 import pymatgen as mg
 from PyQt5 import QtCore, QtWidgets
 
-# do not change the module structure for ds_jcpds and ds_powdiff for
-# retro compatibility
-from ds_jcpds import JCPDS
-from utils import InformationBox, breakdown_filename, dialog_savefile
-from view import MainWindow
+from peakpo.ds_jcpds import JCPDS
+from ..utils import InformationBox, breakdown_filename, dialog_savefile
+from ..view import MainWindow
 
 #from utils import readchi, make_filename, writechi
 
@@ -118,11 +118,20 @@ class MainController(object):
 
     def import_cif(self):
         # pymatgen version check
-        mg_version = mg.__version__
-        mg_version_split = mg_version.split('.')
-        d_current_version = datetime.datetime(int(mg_version_split[0]),
-                                              int(mg_version_split[1]),
-                                              int(mg_version_split[2]))
+        mg_version = getattr(mg, "__version__", None)
+        if mg_version is None:
+            try:
+                mg_version = metadata.version("pymatgen")
+            except metadata.PackageNotFoundError:
+                mg_version = ""
+
+        m = re.match(r"^\s*(\d+)\.(\d+)\.(\d+)", mg_version)
+        if m:
+            d_current_version = datetime.datetime(int(m.group(1)),
+                                                  int(m.group(2)),
+                                                  int(m.group(3)))
+        else:
+            d_current_version = datetime.datetime.max
         d_work = datetime.datetime(2019, 4, 11)
 
         if d_current_version < d_work:

@@ -1,4 +1,4 @@
-from .pyqtutils import undo_button_press, SpinBoxFixStyle
+from .pyqtutils import undo_button_press, SpinBoxFixStyle, apply_dark_palette
 from .fileutils import samefilename, extract_filename, make_filename, \
     get_sorted_filelist, find_from_filelist, writechi, readchi, \
     extract_extension, change_file_path, get_directory, get_temp_dir, \

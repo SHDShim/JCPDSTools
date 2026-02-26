@@ -1,4 +1,6 @@
 {
     "python.pythonPath": "/Users/DanShim/anaconda/bin/python",
-    "python.linting.enabled": true
+    "python.linting.enabled": true,
+    "python-envs.defaultEnvManager": "ms-python.python:conda",
+    "python-envs.defaultPackageManager": "ms-python.python:conda"
 }

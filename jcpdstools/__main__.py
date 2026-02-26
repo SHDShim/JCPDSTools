@@ -1,4 +1,4 @@
-import jcpdstools
+from .jcpdstools import main
 
 if __name__ == '__main__':
-    jcpdstools()
+    raise SystemExit(main())

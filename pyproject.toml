@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jcpdstools"
+version = "0.1.5"
+description = "A PyQt tool for creating and editing JCPDS files for PeakPo."
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "Apache-2.0"}
+authors = [
+  {name = "Sang-Heon Shim"},
+]
+dependencies = [
+  "numpy",
+  "pymatgen>=2019.4.11",
+  "peakpo",
+  "PyQt5",
+]
+
+[project.scripts]
+jcpdstools = "jcpdstools.jcpdstools:main"
+
+[tool.setuptools.packages.find]
+include = ["jcpdstools*"]

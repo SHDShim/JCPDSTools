@@ -1,15 +1,11 @@
-import os
 import sys
 import time
-import numpy
 import traceback
 from io import StringIO
 from PyQt5 import QtWidgets
-from PyQt5 import QtCore
-from PyQt5.QtCore import Qt
-from control import MainController
-from utils import ErrorMessageBox
-import qdarkstyle
+
+from .control import MainController
+from .utils import ErrorMessageBox, apply_dark_palette
 
 
 def excepthook(exc_type, exc_value, traceback_obj):
@@ -45,20 +41,21 @@ def excepthook(exc_type, exc_value, traceback_obj):
     errorbox.exec_()
 
 
-# 2020/02/15 block below does not affect screen resolution
-#QtCore.QCoreApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
-#os.environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
+def main(argv=None):
+    if argv is None:
+        argv = sys.argv
+    app = QtWidgets.QApplication(argv)
+    sys.excepthook = excepthook
+    if '-day' in argv:
+        app.setStyle('default')
+    else:
+        apply_dark_palette(app)
+    controller = MainController()
+    controller.show_window()
+    ret = app.exec_()
+    controller.write_setting()
+    return ret
 
-app = QtWidgets.QApplication(sys.argv)
-# 2020/02/15 block below does not affect screen resolution
-# app.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
-sys.excepthook = excepthook
-if '-day' in sys.argv:
-    app.setStyle('default')
-else:
-    app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
-controller = MainController()
-controller.show_window()
-ret = app.exec_()
-controller.write_setting()
-sys.exit(ret)
+
+if __name__ == '__main__':
+    sys.exit(main())

@@ -1,8 +1,8 @@
 import os
 from PyQt5 import QtWidgets
 from .qtd import Ui_MainWindow
-from version import __version__
-from utils import SpinBoxFixStyle
+from ..version import __version__
+from ..utils import SpinBoxFixStyle
 
 
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):

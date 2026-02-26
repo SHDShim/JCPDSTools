@@ -13,7 +13,8 @@ Major functions include:
 
 ## Required packages
 
-`pymatgen` version 2019.4.11 or later.  
+- `pymatgen` version 2019.4.11 or later
+- `peakpo` (used as the default `ds_jcpds` backend)
 
 ## How to install
 
@@ -21,12 +22,14 @@ Major functions include:
 mkdir JCPDSTools
 cd JCPDSTools
 git clone https://github.com/SHDShim/JCPDSTools.git .
+python -m pip install .
 ```
 
 ## How to run
 
 ```
-cd JCPDSTools/JCPDSTools
+jcpdstools
+# or
 python -m jcpdstools
 ```
 
