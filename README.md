@@ -19,10 +19,19 @@ Major functions include:
 ## How to install
 
 ```
-mkdir JCPDSTools
-cd JCPDSTools
-git clone https://github.com/SHDShim/JCPDSTools.git .
-python -m pip install .
+conda create -n pkpo793 python=3.11 -y
+```
+
+```
+conda activate pkpo793
+```
+
+```
+pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple PeakPo==7.9.3
+```
+
+```
+pip install jcpdstools
 ```
 
 ## How to run
